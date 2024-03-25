@@ -36,6 +36,30 @@ pip install mysqlclient
 
 **Step 2: Create a Django Project**
 
+In django a project can contain multiple apps:
+
+![Django-apps](/screenshots/Django-apps.png)
+
+cutomer service shipping orders erc..
+
+![Django-apps](/screenshots/Django-apps-in-depth.png)
+
+each functional area includes bunch of related functions.
+
+we can reuse these app in other django projects
+
+---
+
+In a real-world analogy, you can think of a Django project as a large building, and Django apps as individual rooms within that building. Each room serves a specific purpose or function, and contains everything needed to fulfill that purpose.​
+
+**Django Project (Building):** Just as a building has a foundation, walls, and a roof to provide structure and support, a Django project has settings, configurations, and global files to provide the framework for your application.​
+
+**Django Apps (Rooms):** Django apps are like individual rooms within the building, each serving a specific function or housing a particular feature of your application.​
+
+Each app contains related components such as models, views, templates, and static files, much like how each room contains furniture, decorations, and other items related to its purpose.
+
+---
+
 Now, create a new Django project using the following command:
 
 ```bash
@@ -126,6 +150,25 @@ python3 manage.py makemigrations products
 python3 manage.py migrate
 
 ```
+
+`makemigrations` and `migrate` are two commands used in Django's migration system, which is responsible for managing changes to your database schema and applying those changes to your database.
+
+Here's an overview of each command:
+
+1. **makemigrations:**
+
+   - This command is used to create new migration files based on the changes you've made to your Django models.
+   - When you modify your models (e.g., adding new fields, changing field types, deleting fields), you need to create a migration to reflect those changes in your database schema.
+   - Running `python3 manage.py makemigrations` analyzes your models and creates migration files (stored in the `migrations` directory of each app) that represent the changes you've made.
+   - These migration files contain Python code that describes the changes to be applied to the database schema.
+
+2. **migrate:**
+   - This command is used to apply the migrations and synchronize the database schema with the current state of your Django models.
+   - After creating migration files with `makemigrations`, you run `python3 manage.py migrate` to execute those migrations and update the database schema accordingly.
+   - Django keeps track of which migrations have been applied to the database and applies any unapplied migrations in the correct order.
+   - Running `migrate` also creates the necessary database tables for Django's administrative tasks (e.g., user authentication, session management) if they haven't been created yet.
+
+In summary, `makemigrations` is used to create migration files based on changes to your models, while `migrate` is used to apply those migration files and update your database schema accordingly. You typically run `makemigrations` whenever you make changes to your models and then run `migrate` to apply those changes to the database.
 
 **Step 8: Create a Form for Product Creation and Update**
 
