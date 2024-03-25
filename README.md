@@ -36,6 +36,30 @@ pip install mysqlclient
 
 **Step 2: Create a Django Project**
 
+In django a project can contain multiple apps:
+
+![Django-apps](/screenshots/Django-apps.png)
+
+cutomer service shipping orders erc..
+
+![Django-apps](/screenshots/Django-apps-in-depth.png)
+
+each functional area includes bunch of related functions.
+
+we can reuse these app in other django projects
+
+---
+
+In a real-world analogy, you can think of a Django project as a large building, and Django apps as individual rooms within that building. Each room serves a specific purpose or function, and contains everything needed to fulfill that purpose.​
+
+**Django Project (Building):** Just as a building has a foundation, walls, and a roof to provide structure and support, a Django project has settings, configurations, and global files to provide the framework for your application.​
+
+**Django Apps (Rooms):** Django apps are like individual rooms within the building, each serving a specific function or housing a particular feature of your application.​
+
+Each app contains related components such as models, views, templates, and static files, much like how each room contains furniture, decorations, and other items related to its purpose.
+
+---
+
 Now, create a new Django project using the following command:
 
 ```bash
