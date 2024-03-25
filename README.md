@@ -127,6 +127,25 @@ python3 manage.py migrate
 
 ```
 
+`makemigrations` and `migrate` are two commands used in Django's migration system, which is responsible for managing changes to your database schema and applying those changes to your database.
+
+Here's an overview of each command:
+
+1. **makemigrations:**
+
+   - This command is used to create new migration files based on the changes you've made to your Django models.
+   - When you modify your models (e.g., adding new fields, changing field types, deleting fields), you need to create a migration to reflect those changes in your database schema.
+   - Running `python3 manage.py makemigrations` analyzes your models and creates migration files (stored in the `migrations` directory of each app) that represent the changes you've made.
+   - These migration files contain Python code that describes the changes to be applied to the database schema.
+
+2. **migrate:**
+   - This command is used to apply the migrations and synchronize the database schema with the current state of your Django models.
+   - After creating migration files with `makemigrations`, you run `python3 manage.py migrate` to execute those migrations and update the database schema accordingly.
+   - Django keeps track of which migrations have been applied to the database and applies any unapplied migrations in the correct order.
+   - Running `migrate` also creates the necessary database tables for Django's administrative tasks (e.g., user authentication, session management) if they haven't been created yet.
+
+In summary, `makemigrations` is used to create migration files based on changes to your models, while `migrate` is used to apply those migration files and update your database schema accordingly. You typically run `makemigrations` whenever you make changes to your models and then run `migrate` to apply those changes to the database.
+
 **Step 8: Create a Form for Product Creation and Update**
 
 Create a Django form for product creation and update in the products/forms.py file:
