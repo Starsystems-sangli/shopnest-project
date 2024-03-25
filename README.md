@@ -48,9 +48,9 @@ Navigate into your project directory:
 cd shopnest
 ```
 
-**Step 3: Create Your eCommerce App**
+**Step 3: Create Your products App**
 
-Next, create your eCommerce app within the Django project:
+Next, create your products app within the Django project:
 
 ```bash
 python3 manage.py startapp products
@@ -220,31 +220,44 @@ You need to create a directory named `templates` inside your products directory 
 
 This directory structure ensures that Django can locate and load the `product_form.html` template when rendering the view. If you have multiple templates for different views, you can organize them similarly within the `templates` directory, creating subdirectories for each app as needed.
 
-
 The content of the `product_form.html` template will depend on the functionality you want to achieve and the design of your form. However, for a basic form to create or update a product, you'll typically include HTML form elements and Django template tags to handle form rendering and submission.
 
 Here's an example of what the `products/templates/product/product_form.html` template might look like:
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Product</title>
-</head>
-<body>
-    <h1>Add Product</h1>
-    <form method="post">
-        {% csrf_token %}
-        <label for="name">Name:</label><br>
-        <input type="text" id="name" name="name" required><br>
-        <label for="description">Description:</label><br>
-        <textarea id="description" name="description" rows="4" cols="50"></textarea><br>
-        <label for="price">Price:</label><br>
-        <input type="number" id="price" name="price" step="0.01" min="0" required><br>
-        <button type="submit">Add Product</button>
-    </form>
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Add Product</title>
+	</head>
+	<body>
+		<h1>Add Product</h1>
+		<form method="post">
+			{% csrf_token %}
+			<label for="name">Name:</label><br />
+			<input type="text" id="name" name="name" required /><br />
+			<label for="description">Description:</label><br />
+			<textarea
+				id="description"
+				name="description"
+				rows="4"
+				cols="50"
+			></textarea
+			><br />
+			<label for="price">Price:</label><br />
+			<input
+				type="number"
+				id="price"
+				name="price"
+				step="0.01"
+				min="0"
+				required
+			/><br />
+			<button type="submit">Add Product</button>
+		</form>
+	</body>
 </html>
 ```
 
@@ -274,18 +287,18 @@ next, is an example of what the `product_detail.html` template might look like:
 ```html
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Detail</title>
-</head>
-<body>
-    <h1>Product Detail</h1>
-    <p><strong>Name:</strong> {{ product.name }}</p>
-    <p><strong>Description:</strong> {{ product.description }}</p>
-    <p><strong>Price:</strong> {{ product.price }}</p>
-    <!-- Add additional product details as needed -->
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Product Detail</title>
+	</head>
+	<body>
+		<h1>Product Detail</h1>
+		<p><strong>Name:</strong> {{ product.name }}</p>
+		<p><strong>Description:</strong> {{ product.description }}</p>
+		<p><strong>Price:</strong> {{ product.price }}</p>
+		<!-- Add additional product details as needed -->
+	</body>
 </html>
 ```
 
@@ -302,24 +315,24 @@ next, is an example of what the `product_list.html` template might look like:
 ```html
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product List</title>
-</head>
-<body>
-    <h1>Product List</h1>
-    <ul>
-        {% for product in products %}
-        <li>
-            <a href="{% url 'product_detail' product.pk %}">{{ product.name }}</a>
-            <!-- Optionally display other product details -->
-        </li>
-        {% empty %}
-        <li>No products available</li>
-        {% endfor %}
-    </ul>
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Product List</title>
+	</head>
+	<body>
+		<h1>Product List</h1>
+		<ul>
+			{% for product in products %}
+			<li>
+				<a href="{% url 'product_detail' product.pk %}">{{ product.name }}</a>
+				<!-- Optionally display other product details -->
+			</li>
+			{% empty %}
+			<li>No products available</li>
+			{% endfor %}
+		</ul>
+	</body>
 </html>
 ```
 
@@ -331,7 +344,6 @@ Explanation of the template:
 - The product name is rendered as a hyperlink that points to the product detail page using the `{% url %}` template tag with the `product_detail` view name and the product's primary key (`product.pk`).
 - If there are no products available, it displays a message indicating so.
 
-
 Make sure the `product_list.html` template file is saved in the correct location (`products/templates/products/product_list.html`) and that it's correctly referenced in the `product_list` view.
 
 next, the `product_confirm_delete.html` template might look like:
@@ -339,19 +351,19 @@ next, the `product_confirm_delete.html` template might look like:
 ```html
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Delete Product</title>
-</head>
-<body>
-    <h1>Delete Product</h1>
-    <p>Are you sure you want to delete the product "{{ product.name }}"?</p>
-    <form method="post">
-        {% csrf_token %}
-        <button type="submit">Confirm Delete</button>
-    </form>
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Delete Product</title>
+	</head>
+	<body>
+		<h1>Delete Product</h1>
+		<p>Are you sure you want to delete the product "{{ product.name }}"?</p>
+		<form method="post">
+			{% csrf_token %}
+			<button type="submit">Confirm Delete</button>
+		</form>
+	</body>
 </html>
 ```
 
@@ -363,9 +375,7 @@ Explanation of the template:
 - `{% csrf_token %}` is used to include a CSRF token for security.
 - A button is included to confirm the deletion.
 
-
 Make sure the `product_confirm_delete.html` template file is saved in the correct location (`products/templates/products/product_confirm_delete.html`) and that it's correctly referenced in the appropriate view.
-
 
 **Step 11: Configure URLs**
 
@@ -394,6 +404,7 @@ Hit the following URL in the browser to Create a new product to the database
 ```sh
 http://127.0.0.1/product/new
 ```
+
 **Get One Product By Id**
 
 Hit the following URL in the browser to get product by id
@@ -409,6 +420,7 @@ Hit the following URL in the browser to get all products
 ```sh
 http://127.0.0.1/product/1/
 ```
+
 **Update Product By Id**
 
 Hit the following URL in the browser to update product by id
