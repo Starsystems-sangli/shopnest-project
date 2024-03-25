@@ -461,7 +461,7 @@ http://127.0.0.1/product/1/
 Hit the following URL in the browser to get all products
 
 ```sh
-http://127.0.0.1/product/1/
+http://127.0.0.1/product/
 ```
 
 **Update Product By Id**
